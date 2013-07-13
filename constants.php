@@ -1,16 +1,16 @@
 <?php
 
-global $wpdb;
-
 interface ConstantList {
     public static function isValid($value);
+    public static function numConstants();
 }
 
 final class Table implements ConstantList {
-    const Applicants = $wpdb->prefix . 'je_worker_applicants';
-    const Workers    = $wpdb->prefix . 'je_workers';
+    // Hardcode in wpdb->prefix since can't assign variables to consts
+    const Applicants = 'wp_je_worker_applicants';
+    const Workers    = 'wp_je_workers';
 
-    private Table() {}
+    private function Table() {}
 
     public static function isValid($value) {
         switch ($value) {
@@ -20,25 +20,27 @@ final class Table implements ConstantList {
         }
         return false;
     }
+    
+    public static function numConstants() {
+        return 2;
+    }
 }
 
 /* Maybe remove this in favour of a configurable list of worker types.
 */
 final class WorkerType implements ConstantList {
-    const None         = 0;
-    const Bar          = 1;
-    const FoodAndDrink = 2;
-    const Recycling    = 3;
-    const Security     = 4;
-    const StageManager = 5;
-    const Steward      = 6;
-    const Supervisor   = 7;
+    const Bar          = 0;
+    const FoodAndDrink = 1;
+    const Recycling    = 2;
+    const Security     = 3;
+    const StageManager = 4;
+    const Steward      = 5;
+    const Supervisor   = 6;
 
-    private WorkerType() {}
+    private function WorkerType() {}
 
     public static function isValid($value) {
         switch ($value) {
-            case None:
             case Bar:
             case FoodAndDrink:
             case Recycling:
@@ -50,21 +52,31 @@ final class WorkerType implements ConstantList {
         }
         return false;
     }
+    
+    public static function numConstants() {
+        return 8;
+    }
 }
 
 final class Shift implements ConstantList {
-    const FirstHalf  = 1;
-    const SecondHalf = 2;
+    const FirstHalf  = 0;
+    const SecondHalf = 1;
+    const FullNight  = 2;
 
-    private Shift() {}
+    private function Shift() {}
 
     public static function isValid($value) {
         switch ($value) {
             case FirstHalf:
             case SecondHalf:
+            case FullNight:
                 return true;
         }
         return false;
+    }
+    
+    public static function numConstants() {
+        return 3;
     }
 }
 
@@ -100,7 +112,7 @@ final class College implements ConstantList {
     const TitHall       = 'Trinity Hall';
     const Wolfson       = 'Wolfson';
 
-    private College() {}
+    private function College() {}
 
     public static function isValid($value) {
         switch ($value) {
@@ -137,6 +149,10 @@ final class College implements ConstantList {
                 return true;
         }
         return false;
+    }
+    
+    public static function numConstants() {
+        return 30;
     }
 }
 

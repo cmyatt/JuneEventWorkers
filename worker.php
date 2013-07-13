@@ -13,7 +13,7 @@ class Worker extends Student {
     private $shift;
     private $is_pic_uploaded;
     
-    public Worker($name, $crsid, $college, $role, $shift, $is_pic_uploaded) {
+    public function Worker($name, $crsid, $college, $role, $shift, $is_pic_uploaded) {
         parent::Student($name, $crsid, $college);
         setRole($role);
         setRank($shift);

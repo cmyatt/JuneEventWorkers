@@ -1,0 +1,40 @@
+
+.debug_msg, .error_msg {
+	margin-bottom: 6px;
+	border-bottom: 1px solid rgb(200, 200, 200);
+	padding-bottom: 4px;
+	margin-top: -3px;
+}
+
+.debug_msg {
+	color: rgb(80, 80, 80);
+	font-size: 105%;
+}
+
+.error_msg {
+	color: rgb(240, 20, 20);
+	font-size: 105%;
+}
+
+.msg_first {
+	margin-top: 3px;
+}
+
+.msg_last {
+	margin-bottom: -1px;
+	border-bottom: 0px;
+}
+
+#debug_output {
+	background-color: rgb(245, 240, 255);
+	border: 1px solid rgb(200, 200, 200);
+	width: 97%;
+}
+
+#viewing_options, #page_info {
+	font-size: 115%;
+}
+
+input[type="checkbox"] {
+	margin-top: 2px;
+}
